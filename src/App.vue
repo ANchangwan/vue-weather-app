@@ -1,14 +1,17 @@
 <script setup>
+  import Navbar from './components/Navbar.vue';
+  import MainComp from "./components/MainComp.vue";
+
+
 
 </script>
 
 <template>
-  <h1>App 2</h1>
+  <Navbar/>
+  <MainComp/>
 </template>
 
 <style scoped lang="scss">
-h1{
-  margin-top: 1rem;
-}
+
 
 </style>
