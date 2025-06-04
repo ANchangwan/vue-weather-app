@@ -12,10 +12,11 @@
     city: 'seoul',
   })
 
+
   // 앱이 실행되면 날씨 데이터 가져오기
   onMounted(() => {
-    console.log(weatherData);
-    fetch(`api_key`)
+    const API_KEY = `https://api.openweathermap.org/data/2.5/weather?q=${weatherData.value.city}&appid=7847cf3208912195e9016a60e5307c5d`;
+    fetch(API_KEY)
         .then(res => res.json())
         .then((data) => {
           weatherData.value.icon = data.weather[0].icon;
@@ -29,7 +30,7 @@
 
 <template>
   <Navbar/>
-  <MainComp/>
+  <MainComp :weatherData="weatherData"/>
 
 </template>
 
