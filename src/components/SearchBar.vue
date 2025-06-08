@@ -1,12 +1,23 @@
 <script setup>
+import {ref} from 'vue';
 
+const inputText = ref('');
+const emits = defineEmits(['onSearchCity']);
 </script>
 
 <template>
   <div class="search-bar">
-    <form class="search-group">
-      <input type="search" placeholder="지역을 입력해주세요!">
-      <button class="search-btn">
+    <form
+        @submit.prevent
+        class="search-group">
+      <input
+          @input="inputText = $event.target.value"
+          type="search" placeholder="지역을 입력해주세요!">
+      <button
+          @click="$store.commit('onSearchCity', inputText);
+                  $store.dispatch('getWeather');
+"
+          class="search-btn">
         <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
       </button>
     </form>
